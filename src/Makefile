@@ -15,7 +15,7 @@ all: $(executables)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 test_%: test_%.o %.o common.o json.o stacktrace.o log.o
-	$(CC) $(LDFLAGS) $^ -o $@
+	$(CC) $^ -o $@ $(LDFLAGS)
 
 test_iostream: ioloop.o buffer.o
 test_site: http.o ioloop.o iostream.o buffer.o http_connection.o mod.o mod_static.o
@@ -23,7 +23,7 @@ test_http: stacktrace.o iostream.o ioloop.o buffer.o http_connection.o
 test_http_server: http_connection.o iostream.o ioloop.o buffer.o http.o site.o mod.o mod_static.o
 
 breeze: $(objects)
-	$(CC) $(LDFLAGS) $^ -o $@
+	$(CC) $^ -o $@ $(LDFLAGS)
 
 .PHONY: clean
 clean:

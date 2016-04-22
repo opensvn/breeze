@@ -44,7 +44,7 @@ enum _return_status {
 #define END_CONF_HANDLE()                                               \
     else {warn("Unknown config option %s with type %d", name, val->type); } }
 
-inline void strlowercase(const char *src, char *dst, size_t n);
+void strlowercase(const char *src, char *dst, size_t n);
 
 void format_http_date(const time_t *time, char *dst, size_t len);
 
